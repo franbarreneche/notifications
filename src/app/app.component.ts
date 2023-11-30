@@ -6,9 +6,18 @@ import { RouterOutlet } from '@angular/router';
   selector: 'app-root',
   standalone: true,
   imports: [CommonModule, RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+    <p>Tengo Notifications API?</p> <pre>{{ notification }}</pre>
+    <br>
+    <p>Tengo Push API?</p> <pre>{{ push }}</pre>
+    <br>
+    <p>Tengo Service Worker API?</p> <pre>{{ serviceWorker }}</pre>
+    <br>
+  `,
+  styles: ``
 })
 export class AppComponent {
-  title = 'notifications';
+  notification = ('Notification' in window) ? 'Yes' : 'No';
+  push = ('PushManager' in window) ? 'Yes' : 'No';
+  serviceWorker = ('serviceWorker' in navigator) ? 'Yes' : 'No';
 }
